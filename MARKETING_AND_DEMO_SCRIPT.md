@@ -1,83 +1,87 @@
-# Marketing Asset & 2-Minute Demo Script
+# Marketing Assets & 2-Minute Demo Script
+
+**Author:** Prince Kumar  
 
 ---
 
-## Option 1: Reddit Post (r/MachineLearning & r/LocalLLaMA)
+## Option 1: Reddit Post (Target Subreddits: r/MachineLearning, r/LocalLLaMA, r/Python)
 
-**Title**: Tired of bloated SDKs and hallucinated tool calls? Swytchcode turns OpenAPI into deterministic contracts for AI Agents (with zero key exposure)
+**Title:** Why I stopped giving AI agents raw API keys: testing contract-based tool calling with Swytchcode
 
-**Post Body**:
-Hey everyone,
+**Post Body:**
+Hey devs,
 
-If you’ve built production AI agents (LangGraph, CrewAI, AutoGen), you know the pain:
-1. Installing 15 heavy SDKs (Stripe, HubSpot, GitHub, Jira) just to make one or two calls.
-2. Models constantly hallucinating parameter names or missing required query params.
-3. Giving your LLM raw API keys and praying it doesn't leak them or make catastrophic calls.
+Anyone building autonomous workflows with tools like LangGraph or AutoGen knows the pain points with API integrations:
+1. You have to install dozens of heavy vendor SDKs (Stripe, HubSpot, Resend, etc.) just to execute one or two calls.
+2. Models regularly hallucinate parameters or pass malformed types.
+3. Exposing live API keys in application memory or agent tool contexts is always risky.
 
-I recently tested **Swytchcode** (https://swytchcode.com), and its approach is super interesting:
+I spent the last couple of days testing **Swytchcode** (https://swytchcode.com), and the approach is pretty neat:
 
-Instead of client libraries, Swytchcode uses **Wrekenfiles** (`wrekenfile.yaml`) — local, schema-validated contracts that define exact endpoint shapes, input types, and return values.
+Instead of installing client SDKs, it uses **Wrekenfiles** (`wrekenfile.yaml`) — local declarative contracts defining method endpoints, input types, and required headers. 
 
-Here is what workflow looks like:
-- `swy init` sets up local trust boundaries in `tooling.json`.
-- `swy demo stripe` lets you test execution without even needing an API key.
-- Inside Python, you call one single runtime:
+How it works in practice:
+- `swytchcode init` sets up local boundaries in `tooling.json`.
+- `swytchcode demo stripe` lets you test execution in sandbox mode right from your terminal without even needing an API key.
+- Inside Python, a single lightweight runtime handles everything:
 ```python
-from swytchcode_runtime import exec as swy_exec
+from swytchcode_runtime import exec as swytchcode_exec
 
-# Validated locally before hitting the network:
-res = swy_exec("stripe.create_payment", {"amount": 2000, "currency": "usd"})
+res = swytchcode_exec("stripe.create_payment", {"amount": 2000, "currency": "usd"})
 ```
 
-The CLI handles credential isolation, type checking, and audit logging out-of-the-box.
+The runtime validates the payload against the local contract schema before anything leaves your machine, while keeping credentials isolated.
 
-Has anyone else explored contract-driven tool execution for agents? Keen to hear your thoughts!
+Has anyone else experimented with contract-driven tool calling for agents instead of full SDKs? Curious to hear how others handle deterministic tool execution.
 
 ---
 
 ## Option 2: LinkedIn Post
 
-🚀 **Why giving AI agents raw API keys is a thing of the past:**
+When building multi-agent workflows, the biggest failure point usually isn't the model's reasoning — it's **API execution fragility**.
 
-When building autonomous multi-agent systems, the biggest failure mode isn't the model's reasoning — it's **API execution fragility**. 
+Between heavyweight vendor SDKs, hallucinated parameter schemas, and the security risk of giving autonomous agents direct access to raw API keys, productionizing agent tools requires a lot of defensive boilerplate.
 
-Between bloated SDKs, hallucinated payloads, and credential leakage risks, developers waste hours writing boilerplate validation.
+Over the past few days, I evaluated **Swytchcode**, a developer tool tackling this problem:
 
-I've been exploring **Swytchcode**, a developer tool redefining how agents interact with external services:
+🔑 **Key Takeaways from my exploration:**
+- **Contract-First Schemas (Wrekenfiles):** Local YAML schemas define explicit API shapes, payload types, and authentication schemes.
+- **Zero Credential Exposure:** Agents call standardized operations without holding raw secrets in runtime state.
+- **Local Validation:** Tool calls are validated locally before any network request is dispatched, preventing failed or corrupted requests.
+- **Unified Runtime:** Replaces multiple disparate vendor SDKs with one clean interface (`swytchcode-runtime`).
 
-✨ **What makes it powerful:**
-- 📜 **Contract-First Wrekenfiles:** Strict declarative schemas for APIs (Stripe, HubSpot, GitHub) validated locally before execution.
-- 🛡️ **Zero Credential Exposure:** Agents invoke canonical tool IDs (`stripe.create_payment`) without holding raw secrets.
-- ⚡ **Offline-Ready Kernel:** Pure deterministic validation with sub-15ms local checks.
-- 🧩 **Plugs into LangGraph & Python:** One unified `swytchcode_runtime` replaces dozens of disparate SDKs.
+Tools that introduce determinism and security boundaries into agentic systems are going to be essential as workflows become more autonomous.
 
-Tools like Swytchcode are paving the way for enterprise-grade autonomous systems where security and determinism are first-class citizens.
+Check out their docs: https://docs.swytchcode.com
 
-Check it out at https://swytchcode.com!
-
-#AIAgents #LangGraph #SoftwareEngineering #DevTools #API #Python
+#AIAgents #Python #SoftwareEngineering #DevTools #LangGraph #APIs
 
 ---
 
 ## Option 3: 2–3 Minute Demo Video Script
 
-**[0:00 - 0:30] Introduction & Problem Hook**
-- *"Hi everyone! In this video, I'm demonstrating Swytchcode — an execution authority kernel for AI agents. When building autonomous workflows, managing multiple API SDKs and preventing hallucinated parameters is a huge headache. Let's see how Swytchcode solves this."*
+*Use this script when recording your screen with Loom or OBS.*
 
-**[0:30 - 1:15] CLI & Wrekenfile Walkthrough**
-- *Show terminal*:
-  - Run `swytchcode --version`
-  - Show project directory: `ls .swytchcode/`
-  - Open `wrekenfile.yaml`: *"Here is the Wrekenfile. Unlike standard OpenAPI docs, it defines strict input/output locations, status codes, and type schemas right on your local machine."*
+**[0:00 - 0:30] Introduction & Problem**
+> "Hi, I'm Prince Kumar. In this video, I'm going to demonstrate my exploration of Swytchcode and show how it provides a contract-driven execution layer for AI agents. 
+> When we build agents that call external services like Stripe or HubSpot, managing separate SDKs and preventing hallucinated parameters is a constant issue. Let's see how Swytchcode handles this."
 
-**[1:15 - 2:00] Live API Execution**
-- Run `swytchcode demo stripe`:
-  - Show the live JSON payload and response output (`✔ Payment created successfully: $20.00, ID: pi_3UX...`).
-  - Explain: *"Notice how we executed a verified Stripe call in sandbox mode without exposing any secret API keys or installing the Stripe SDK!"*
+**[0:30 - 1:15] CLI & Wrekenfile Overview**
+*(Show your VS Code terminal and file tree)*
+> "First, I installed the CLI globally via npm. Here in the terminal, running:
+> `swytchcode --version` shows version 2.25.1.
+> In my project tree, you can see the `.swytchcode` directory. The heart of Swytchcode is the **Wrekenfile** — here in `wrekenfile.yaml`. 
+> Unlike a massive OpenAPI document, the Wrekenfile defines precise endpoint methods, expected input structures, and return types right on my local machine."
 
-**[2:00 - 2:45] Agent Integration in Python & Friction Log**
-- Open `main.py`: *"In our Python agent, we simply import `from swytchcode_runtime import exec as swytchcode_exec`. It coordinates Stripe, HubSpot, and Resend in a LangGraph state machine."*
-- Mention one friction point: *"One key learning from my friction diary was observing how the CLI enforces non-interactive flags (`--editor`, `--mode`) in CI environments."*
+**[1:15 - 1:55] Live API Execution**
+*(In your VS Code terminal, run `swytchcode demo stripe`)*
+> "Now let's test a live API call. I'll run `swytchcode demo stripe`.
+> Notice the output: it creates a payment intent (`pi_...`) through the demo account without requiring me to configure a Stripe account or expose an API key. The CLI validates the input contract and handles the execution directly."
 
-**[2:45 - 3:00] Conclusion & Wrap-Up**
-- *"Swytchcode bridges the gap between probabilistic LLMs and deterministic API execution. Thanks for watching!"*
+**[1:55 - 2:35] Python Agent Integration & Key Learning**
+*(Show `main.py` in VS Code)*
+> "In Python, we don't need the Stripe or HubSpot client libraries. We import `swytchcode-runtime` and execute calls using the validated contract names.
+> During onboarding, I kept a detailed friction diary. One interesting discovery was on Windows: the CLI's Node.js wrapper can hang in non-TTY environments due to an stdin wait loop, which I resolved by invoking the underlying binary directly and utilizing interactive shells."
+
+**[2:35 - 3:00] Conclusion**
+> "Overall, Swytchcode makes agent tool calling deterministic, secure, and much lighter than traditional SDK bundles. Thanks for watching!"

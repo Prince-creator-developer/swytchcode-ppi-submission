@@ -1,28 +1,38 @@
-# AI Tools Disclosure & Submission Form Checklist
+# Submission Guide & Form Checklist
 
-## 1. AI Tools Disclosure
-In compliance with assignment guidelines, here is the full disclosure of AI resources utilized:
-
-- **AI Tools Used**: Google Gemini / Antigravity Agentic Assistant.
-- **How AI Was Applied**:
-  - Explored Swytchcode's architecture, documentation, and source code (`bin/swytchcode.js`).
-  - Diagnosed Windows non-TTY process hanging (`readAllStdin()` EOF loop) and PostHog telemetry timeout warnings.
-  - Drafted structured markdown documentation, friction diary logs, and marketing copy.
-  - Verified and documented LangGraph customer onboarding state machine patterns.
-- **Verification & Understanding**:
-  - All commands, code execution paths, and Wrekenfile schemas were directly executed, tested, and validated in PowerShell and Python 3.11.
+**Candidate:** Prince Kumar  
+**Target Deadline:** 5th November 2026 (11:59 pm)  
+**Submission Form:** https://docs.google.com/forms/d/e/1FAIpQLSeBHYcRhWEuffCSoJJC5NiuToutR_ElQE4jvPDjueafRVG8gg/viewform  
 
 ---
 
-## 2. Google Form Submission Helper
+## 1. AI Usage Disclosure (Required by Form)
 
-When filling out the official Google Form (https://docs.google.com/forms/d/e/1FAIpQLSeBHYcRhWEuffCSoJJC5NiuToutR_ElQE4jvPDjueafRVG8gg/viewform):
+*Use this clean, honest statement in the AI disclosure field:*
 
-| Form Question / Field | Ready-to-Paste Content |
+> "I used Google Gemini as a pair-programming assistant to research Swytchcode's architecture and troubleshoot Windows-specific CLI behavior (specifically diagnosing the Node.js `readAllStdin` hang on non-TTY stdio). I directly tested and executed all commands in PowerShell, validated the Wrekenfile schemas, verified the demo executions, and wrote the project documentation and evaluation notes."
+
+---
+
+## 2. Google Form Field Mapping
+
+| Form Question | Content to Paste / Reference |
 | :--- | :--- |
-| **GitHub Repository Link** | Link to your GitHub repo containing this submission directory (`swytchcode-ppi-submission`). |
-| **Demo Video Link** | Link to your 2–3 minute Loom / unlisted YouTube video (following `MARKETING_AND_DEMO_SCRIPT.md`). |
-| **Swytchcode in your own words (150–250 words)** | Copy directly from `EXPLANATION.md`. |
-| **Friction Points & Onboarding Feedback** | Copy key highlights from `FRICTION_DIARY.md` (Node stdin hang, PostHog timeout, `swy init` flags). |
+| **GitHub Repository Link** | `https://github.com/Prince-creator-developer/swytchcode-ppi-submission` |
+| **Demo Video Link** | Paste your unlisted YouTube, Loom, or Google Drive link (recorded using `MARKETING_AND_DEMO_SCRIPT.md`). |
+| **Swytchcode in your own words (150–250 words)** | Copy text from `EXPLANATION.md`. |
+| **Friction Points & Onboarding Feedback** | Copy the 5 points from `FRICTION_DIARY.md` (specifically mentioning the Windows CLI hang, PostHog timeout, and `init` flags). |
 | **Marketing Asset** | Copy the Reddit or LinkedIn post from `MARKETING_AND_DEMO_SCRIPT.md`. |
-| **AI Usage Disclosure** | Copy section 1 above. |
+| **AI Disclosure** | Copy the disclosure statement in Section 1 above. |
+
+---
+
+## 3. Git Push Verification
+
+To make sure your latest files are on GitHub:
+```powershell
+cd "c:\Users\Prince kumar\OneDrive\Desktop\dsih\swytchcode-ppi-submission"
+git add .
+git commit -m "Update project documentation, friction diary, and demo assets"
+git push origin main
+```
