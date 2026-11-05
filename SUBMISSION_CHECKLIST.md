@@ -22,7 +22,7 @@
 | **Demo Video Link** | Paste your unlisted YouTube, Loom, or Google Drive link (recorded using `MARKETING_AND_DEMO_SCRIPT.md`). |
 | **Swytchcode in your own words (150–250 words)** | Copy text from `EXPLANATION.md`. |
 | **Friction Points & Onboarding Feedback** | Copy the 5 points from `FRICTION_DIARY.md` (specifically mentioning the Windows CLI hang, PostHog timeout, and `init` flags). |
-| **Marketing Asset** | Copy the Reddit or LinkedIn post from `MARKETING_AND_DEMO_SCRIPT.md`. |
+| **Marketing Asset** | `https://www.reddit.com/user/No-Cranberry9977/comments/1xojlt2/why_i_stopped_giving_ai_agents_raw_api_keys/` (and text from `MARKETING_AND_DEMO_SCRIPT.md`) |
 | **AI Disclosure** | Copy the disclosure statement in Section 1 above. |
 
 ---

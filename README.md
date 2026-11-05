@@ -3,6 +3,7 @@
 **Author:** Prince Kumar  
 **Submission Date:** November 5, 2026  
 **Assignment:** Swytchcode PPI Next Steps  
+**Live Reddit Post:** [Reddit Discussion](https://www.reddit.com/user/No-Cranberry9977/comments/1xojlt2/why_i_stopped_giving_ai_agents_raw_api_keys/)  
 
 ---
 

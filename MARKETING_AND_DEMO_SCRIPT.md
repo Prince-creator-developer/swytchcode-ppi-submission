@@ -6,6 +6,9 @@
 
 ## Option 1: Reddit Post (Target Subreddits: r/MachineLearning, r/LocalLLaMA, r/Python)
 
+**Live Reddit Post:** [View on Reddit](https://www.reddit.com/user/No-Cranberry9977/comments/1xojlt2/why_i_stopped_giving_ai_agents_raw_api_keys/)  
+**URL:** `https://www.reddit.com/user/No-Cranberry9977/comments/1xojlt2/why_i_stopped_giving_ai_agents_raw_api_keys/`
+
 **Title:** Why I stopped giving AI agents raw API keys: testing contract-based tool calling with Swytchcode
 
 **Post Body:**
